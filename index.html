@@ -4,30 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="icon" href="./favicon.ico">
+    <title>TicTacToe #C0DE.v</title>
+    <link rel="icon" href="./icon.png">
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+    <div class="box-papan">
+        <p>Player 1 <label id="p1">play</label></p>
+        <div class="papan">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="loading hide">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <p class="lable-p2 show">Player 2 <label id="p2"></label></p>
+    </div>
     <div class="box-mode">
         <a href="javascript: void(0)" class="mode player-mode">Player Mode</a>
         <a href="javascript: void(0)" class="mode ai-mode">AI Mode</a>
+        <a href="javascript: void(0)" class="btn-reset">Clear</a>
     </div>
-    <p>Player 1 <label id="p1">play</label></p>
-    <div class="papan">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-    </div>
-    <p>Player 2 <label id="p2"></label></p>
-    <a href="javascript: void(0)" class="btn-reset">Clear Board</a>
     <script src="./js/main.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/ai.js"></script>

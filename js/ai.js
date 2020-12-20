@@ -2,19 +2,24 @@ function inputAi(e) {
   statusWin = [];
   if (e.currentTarget.innerHTML === "") {
     console.clear();
+    domLable2.classList.add("hide");
+    domLoading.classList.add("show");
     e.currentTarget.innerHTML = content;
-    // console.log(e.currentTarget.innerHTML);
-    statusWin = cekWin(content);
-    if (statusWin || statusWin === 0) {
-      alert(content.toUpperCase() + " Menang");
-      setWin[statusWin].forEach((i) => {
-        row[i].classList.add(styleWin);
-        domBoard.classList.add(styleBlock);
-      });
-      return true;
-    } else {
-      getPly();
-    }
+    setTimeout(() => {
+      domLable2.classList.remove("hide");
+      domLoading.classList.remove("show");
+      statusWin = cekWin(content);
+      if (statusWin || statusWin === 0) {
+        alert(content.toUpperCase() + " Menang");
+        setWin[statusWin].forEach((i) => {
+          row[i].classList.add(styleWin);
+          domBoard.classList.add(styleBlock);
+        });
+        return true;
+      } else {
+        getPly();
+      }
+    }, 500);
   }
 }
 

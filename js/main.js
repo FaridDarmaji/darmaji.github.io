@@ -5,6 +5,8 @@ const domReset = document.querySelector(".btn-reset");
 const domBoard = document.querySelector(".papan");
 const domPlyMode = document.querySelector(".player-mode");
 const domAiMode = document.querySelector(".ai-mode");
+const domLoading = document.querySelector(".loading");
+const domLable2 = document.querySelector(".lable-p2");
 
 let tmp = []; // ai
 let aiCry = false; // ai
@@ -28,16 +30,16 @@ const setWin = [
 
 domPlyMode.addEventListener("click", () => {
   reset();
-  domPlyMode.classList.add("active");
-  domAiMode.classList.remove("active");
+  domPlyMode.classList.add("mode-select");
+  domAiMode.classList.remove("mode-select");
   mode = "player";
   titleMode = "Multi Player Mode";
   main();
 });
 domAiMode.addEventListener("click", () => {
   reset();
-  domAiMode.classList.add("active");
-  domPlyMode.classList.remove("active");
+  domAiMode.classList.add("mode-select");
+  domPlyMode.classList.remove("mode-select");
   mode = "ai";
   titleMode = "AI Mode";
   main();
@@ -48,11 +50,11 @@ domReset.addEventListener("click", () => {
 });
 
 function main() {
-  domBox.forEach((box, index) => {
+  domBox.forEach((box) => {
     row.push(box);
   });
 
-  row.forEach((box, index) => {
+  row.forEach((box) => {
     box.addEventListener("click", (e) => {
       mode === "player" ? inputPlayer(e) : inputAi(e);
     });
