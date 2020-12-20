@@ -1,5 +1,5 @@
 function inputPlayer(e) {
-  let statusWin = [];
+  statusWin = [];
   if (e.currentTarget.innerHTML === "") {
     setPlayer();
     e.currentTarget.innerHTML = content;
@@ -15,6 +15,7 @@ function inputPlayer(e) {
       return true;
     }
     content = content === "x" ? "o" : "x";
+    setPlayer();
   }
 }
 
@@ -22,8 +23,8 @@ function cekWin(currentTxt) {
   let win;
   setWin.forEach((arr) => {});
   for (let a = 0; a < setWin.length; a++) {
-    console.log(setWin[a]);
-    console.log("===========");
+    // console.log(setWin[a]);
+    // console.log("===========");
     for (let b = 0; b < setWin[a].length; b++) {
       let txt = row[setWin[a][b]].innerHTML;
       if (txt == "" || txt != currentTxt) {
@@ -43,6 +44,7 @@ function cekWin(currentTxt) {
       // );
     }
     if (win === true) {
+      console.log(a);
       return a;
       // statusWin.push({
       //   status: win,

@@ -6,8 +6,12 @@ const domBoard = document.querySelector(".papan");
 const domPlyMode = document.querySelector(".player-mode");
 const domAiMode = document.querySelector(".ai-mode");
 
+let tmp = []; // ai
+let aiCry = false; // ai
 let content = "x";
-let mode = "player";
+let mode = "";
+let statusWin = [];
+let titleMode = "";
 const styleWin = "box-win";
 const styleBlock = "block-click";
 const row = [];
@@ -22,25 +26,23 @@ const setWin = [
   [2, 4, 6],
 ];
 
-main();
 domPlyMode.addEventListener("click", () => {
-  console.log("Multi Player Mode");
+  reset();
   domPlyMode.classList.add("active");
   domAiMode.classList.remove("active");
-
-  reset();
   mode = "player";
+  titleMode = "Multi Player Mode";
   main();
 });
 domAiMode.addEventListener("click", () => {
-  console.log("AI Mode");
+  reset();
   domAiMode.classList.add("active");
   domPlyMode.classList.remove("active");
-
-  reset();
   mode = "ai";
+  titleMode = "AI Mode";
   main();
 });
+
 domReset.addEventListener("click", () => {
   reset();
 });
@@ -52,34 +54,32 @@ function main() {
 
   row.forEach((box, index) => {
     box.addEventListener("click", (e) => {
-      console.clear();
       mode === "player" ? inputPlayer(e) : inputAi(e);
     });
   });
 }
 
 function reset() {
-  console.log("reset");
   row.forEach((box) => {
     box.textContent = "";
   });
-  console.clear();
-  content = "x";
   for (let i = 0; i < row.length; i++) {
     row[i].classList.remove(styleWin);
     domBoard.classList.remove(styleBlock);
   }
-}
-
-function demoAI() {
-  let a = Math.floor(Math.random() * (3 - 0));
-  let b = Math.floor(Math.random() * (6 - 3)) + 3;
-  let c = Math.floor(Math.random() * (8 - 6)) + 6;
-  console.log(a + "," + b + "," + c);
+  setPlayer();
+  content = "x";
+  tmp = [];
+  statusWin = [];
+  aiCry = false;
+  // console.clear();
+  console.log("reset");
+  console.log(titleMode);
 }
 
 function setPlayer() {
+  console.log("content:" + content);
   domP1.textContent = "";
   domP2.textContent = "";
-  content === "x" ? (domP2.textContent = "play") : (domP1.textContent = "play");
+  content === "x" ? (domP1.textContent = "play") : (domP2.textContent = "play");
 }
