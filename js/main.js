@@ -1,12 +1,13 @@
 const domBox = document.querySelectorAll(".box");
-const domP1 = document.querySelector("#p1");
+// const domP1 = document.querySelector("#p1");
 const domP2 = document.querySelector("#p2");
 const domReset = document.querySelector(".btn-reset");
 const domBoard = document.querySelector(".papan");
 const domPlyMode = document.querySelector(".player-mode");
 const domAiMode = document.querySelector(".ai-mode");
 const domLoading = document.querySelector(".loading");
-const domLable2 = document.querySelector(".lable-p2");
+const domLable2 = document.querySelector(".lable-player");
+const domTitleMode = document.querySelector(".title-lable");
 
 let tmp = []; // ai
 let aiCry = false; // ai
@@ -34,14 +35,17 @@ domPlyMode.addEventListener("click", () => {
   domAiMode.classList.remove("mode-select");
   mode = "player";
   titleMode = "Multi Player Mode";
+  setPlayer();
   main();
 });
 domAiMode.addEventListener("click", () => {
   reset();
   domAiMode.classList.add("mode-select");
   domPlyMode.classList.remove("mode-select");
+  domLable2.innerHTML = "AI / Computer";
   mode = "ai";
   titleMode = "AI Mode";
+  setPlayer();
   main();
 });
 
@@ -74,14 +78,20 @@ function reset() {
   tmp = [];
   statusWin = [];
   aiCry = false;
-  // console.clear();
+  // domLable2.innerHTML = "";
+  setPlayer();
+  console.clear();
   console.log("reset");
   console.log(titleMode);
 }
 
 function setPlayer() {
-  console.log("content:" + content);
-  domP1.textContent = "";
-  domP2.textContent = "";
-  content === "x" ? (domP1.textContent = "play") : (domP2.textContent = "play");
+  // console.log("content:" + content);
+  let labelP1 = "Player 1 play";
+  let labelP2 = "";
+  mode === "player" ? (labelP2 = "Player 2 play") : (labelP2 = "AI / Computer");
+  content === "x"
+    ? (domLable2.innerHTML = labelP1)
+    : (domLable2.innerHTML = labelP2);
+  domTitleMode.innerHTML = titleMode;
 }

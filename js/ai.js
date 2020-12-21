@@ -2,12 +2,12 @@ function inputAi(e) {
   statusWin = [];
   if (e.currentTarget.innerHTML === "") {
     console.clear();
-    domLable2.classList.add("hide");
-    domLoading.classList.add("show");
+    domLable2.style.display = "none";
+    domLoading.style.display = "block";
     e.currentTarget.innerHTML = content;
     setTimeout(() => {
-      domLable2.classList.remove("hide");
-      domLoading.classList.remove("show");
+      domLable2.style.display = "block";
+      domLoading.style.display = "none";
       statusWin = cekWin(content);
       if (statusWin || statusWin === 0) {
         alert(content.toUpperCase() + " Menang");
