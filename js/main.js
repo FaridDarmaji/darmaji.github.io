@@ -2,6 +2,7 @@ const domBox = document.querySelectorAll(".box");
 // const domP1 = document.querySelector("#p1");
 const domP2 = document.querySelector("#p2");
 const domReset = document.querySelector(".btn-reset");
+const domTest = document.querySelector(".btn-test");
 const domBoard = document.querySelector(".papan");
 const domPlyMode = document.querySelector(".player-mode");
 const domAiMode = document.querySelector(".ai-mode");
@@ -49,6 +50,26 @@ domAiMode.addEventListener("click", () => {
   main();
 });
 
+// let testMode = true;
+// domTest.addEventListener("click", () => {
+//   // reset();
+//   if (testMode) {
+//     domBox.forEach((box) => {
+//       box.addEventListener("click", (e) => {
+//         console.log(box.currentTarget);
+//         box.classList.add(styleWin);
+//       });
+//     });
+//     testMode = false;
+//   } else {
+//     domBox.forEach((box) => {
+//       console.log(box.currentTarget);
+//       box.classList.remove(styleWin);
+//     });
+//     testMode = false;
+//   }
+// });
+
 domReset.addEventListener("click", () => {
   reset();
 });
@@ -68,17 +89,16 @@ function main() {
 function reset() {
   row.forEach((box) => {
     box.textContent = "";
-  });
-  for (let i = 0; i < row.length; i++) {
-    row[i].classList.remove(styleWin);
+    box.classList.remove(styleWin);
     domBoard.classList.remove(styleBlock);
-  }
+  });
+  for (let i = 0; i < row.length; i++) {}
   setPlayer();
   content = "x";
   tmp = [];
   statusWin = [];
   aiCry = false;
-  // domLable2.innerHTML = "";
+  domLable2.innerHTML = "Pilih mode bermain.";
   setPlayer();
   console.clear();
   console.log("reset");

@@ -45,9 +45,11 @@ function getPly() {
   } else {
     if (selectAi.includes(2)) {
       console.log("next ai nya menang");
-      move = getComboMove(comboAi);
-      move
-        ? (row[move[getRandom(move.length)]].innerHTML = "o")
+      // move = getComboMove(comboAi);
+      comboAi
+        ? (row[
+            getComboMove(comboAi)[getRandom(getComboMove(comboAi).length)]
+          ].innerHTML = "o")
         : randomMove("o");
       console.log(move);
       console.log(cekWin("o"));
